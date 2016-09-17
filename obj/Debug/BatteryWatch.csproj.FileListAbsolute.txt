@@ -1,0 +1,9 @@
+C:\Work\BatteryWatch\BatteryWatch\bin\Debug\BatteryWatch.exe.config
+C:\Work\BatteryWatch\BatteryWatch\obj\Debug\BatteryWatch.csprojResolveAssemblyReference.cache
+C:\Work\BatteryWatch\BatteryWatch\obj\Debug\BatteryWatch.Properties.Resources.resources
+C:\Work\BatteryWatch\BatteryWatch\obj\Debug\BatteryWatch.csproj.GenerateResource.Cache
+C:\Work\BatteryWatch\BatteryWatch\bin\Debug\BatteryWatch.exe
+C:\Work\BatteryWatch\BatteryWatch\bin\Debug\BatteryWatch.pdb
+C:\Work\BatteryWatch\BatteryWatch\obj\Debug\BatteryWatch.exe
+C:\Work\BatteryWatch\BatteryWatch\obj\Debug\BatteryWatch.pdb
+C:\Work\BatteryWatch\BatteryWatch\obj\Debug\BatteryWatch.SettingsWindow.resources
