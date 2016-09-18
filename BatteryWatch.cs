@@ -1,8 +1,10 @@
-﻿using BatteryWatch.Properties;
+﻿using BatteryWatch;
+using BatteryWatch.Properties;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -42,6 +44,9 @@ public class BatteryWatchApplicationContext : ApplicationContext
             }),
             Visible = true
         };
+        BatteryWatcher bww = new BatteryWatcher();
+        bww.MainLoop(66, 70);
+        
     }
 
     void OnExit(object sender, EventArgs e)
