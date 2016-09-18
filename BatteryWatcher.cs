@@ -9,10 +9,15 @@ namespace BatteryWatch
     class BatteryWatcher
     {
         const string LOW_BATTERY_MESSAGE = "Your battery has dropped down below {0} percent!";
-        const string HIGH_BATTERY_MESSAGE = "Your battery has exceeded {} percent!";
+        const string HIGH_BATTERY_MESSAGE = "Your battery has exceeded {0} percent!";
+        int minimumBatteryPercentage = 0,
+            maximumBatteryPercentage = 0;
 
         public void MainLoop(int minimum, int maximum)
         {
+            minimumBatteryPercentage = minimum;
+            maximumBatteryPercentage = maximum;
+
             while (true)
             {
                 PowerStatus pw = SystemInformation.PowerStatus;
@@ -35,6 +40,48 @@ namespace BatteryWatch
             }
         }
 
+        private void LoopUntilBatteryIsHigh(int minimum)
+        {
+            /* this method is called when the battery has gone below the minimum percentage
+               it loops until the battery is charged above the minimum percentage and resumes the main loop again.*/
+
+            while (true)
+            {
+                PowerStatus pw = SystemInformation.PowerStatus;
+
+                int batteryPercent = (int)(pw.BatteryLifePercent// gets the battery percentage as a float -> 0.75
+                    * 100); // that's why we multiply it by 100
+
+                if (IsAboveMaximum(minimum, batteryPercent))
+                    break;
+
+                Thread.Sleep(60000);
+            }
+
+            MainLoop(minimumBatteryPercentage, maximumBatteryPercentage);
+        }
+
+        private void LoopUntilBatteryIsLow(int maximum)
+        {
+            /* this method is called when the battery has gone above the maximum percentage
+               it loops until the battery drops below the maximum percentage and starts the main loop again */
+
+            while (true)
+            {
+                PowerStatus pw = SystemInformation.PowerStatus;
+
+                int batteryPercent = (int)(pw.BatteryLifePercent // gets the battery percentage as a float -> 0.75
+                    * 100); // that's why we multiply it by 100
+
+                if (IsBelowMinimum(maximum, batteryPercent))
+                    break;
+
+                Thread.Sleep(60000);
+            }
+
+            MainLoop(minimumBatteryPercentage, maximumBatteryPercentage);
+        }
+
         private bool IsBelowMinimum(int minimum, int current)
         {
             return current < minimum;
@@ -54,6 +101,14 @@ namespace BatteryWatch
             highBatteryAW.ChangeWarningLabelText(message);
 
             highBatteryAW.Show();
+
+            highBatteryAW.FormClosed += (s, args) =>
+            {
+                // when we close the warning window, loop until the battery is charged back to normal and then run the
+                // mainloop again
+                highBatteryAW.Dispose();
+                LoopUntilBatteryIsLow(maximumPercentage);
+            };
         }
 
         private void DisplayLowBatteryAlertWindow(int minimumPercentage)
@@ -65,6 +120,14 @@ namespace BatteryWatch
             lowBatteryAW.ChangeWarningLabelText(message);
 
             lowBatteryAW.Show();
+
+            lowBatteryAW.FormClosed += (s, args) =>
+            {
+                // when we close the warning window, loop until the battery is charged back to normal and then run the
+                // mainloop again
+                lowBatteryAW.Dispose();           
+                LoopUntilBatteryIsHigh(minimumPercentage);
+            };
         }
     }
 }
