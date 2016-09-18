@@ -53,7 +53,7 @@ namespace BatteryWatch
 
             highBatteryAW.ChangeWarningLabelText(message);
 
-            Application.Run(highBatteryAW);
+            highBatteryAW.Show();
         }
 
         private void DisplayLowBatteryAlertWindow(int minimumPercentage)
