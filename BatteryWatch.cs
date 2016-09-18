@@ -1,11 +1,10 @@
 ﻿using BatteryWatch;
-using BatteryWatch.Properties;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
 
 
-/* VERSION: 0.1
+/* VERSION: 0.3
    AUTHOR: Enether */
 namespace BatteryWatch
 {
@@ -19,7 +18,7 @@ namespace BatteryWatch
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new BatteryWatchApplicationContext());
+            Application.Run(new SettingsWindow());
         }
     }
 }
@@ -29,7 +28,7 @@ public class BatteryWatchApplicationContext : ApplicationContext
 {
     private NotifyIcon trayIcon;
 
-    public BatteryWatchApplicationContext()
+    public BatteryWatchApplicationContext(int minimumPercentage, int maximumPercentage)
     {
         // Initialize Tray Icon
         trayIcon = new NotifyIcon()
@@ -40,8 +39,9 @@ public class BatteryWatchApplicationContext : ApplicationContext
             }),
             Visible = true
         };
+
         BatteryWatcher bww = new BatteryWatcher();
-        bww.MainLoop(66, 70);
+        bww.MainLoop(minimumPercentage, maximumPercentage);
         
     }
 
