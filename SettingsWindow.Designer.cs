@@ -102,9 +102,12 @@
             this.Controls.Add(this.lowestBatteryPercentageLabel);
             this.Controls.Add(this.highestBatteryPercentTextBox);
             this.Controls.Add(this.lowestBatteryPercentTextBox);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "SettingsWindow";
-            this.Text = "Battery";
+            this.Text = "Battery Watch";
             this.ResumeLayout(false);
             this.PerformLayout();
 

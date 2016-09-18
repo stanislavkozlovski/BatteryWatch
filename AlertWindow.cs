@@ -4,6 +4,7 @@ namespace BatteryWatch
 {
     public partial class AlertWindow : Form
     {
+        // TODO: Change Window title
         public AlertWindow()
         {
             InitializeComponent();
