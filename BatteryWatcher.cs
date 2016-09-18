@@ -17,8 +17,8 @@ namespace BatteryWatch
             {
                 PowerStatus pw = SystemInformation.PowerStatus;
 
-                int batteryPercent = (int)pw.BatteryLifePercent// gets the battery percentage as a float -> 0.75
-                    * 100; // that's why we multiply it by 100
+                int batteryPercent = (int)(pw.BatteryLifePercent// gets the battery percentage as a float -> 0.75
+                    * 100); // that's why we multiply it by 100
 
                 if(IsBelowMinimum(minimum, batteryPercent))
                 {
@@ -64,7 +64,7 @@ namespace BatteryWatch
 
             lowBatteryAW.ChangeWarningLabelText(message);
 
-            Application.Run(lowBatteryAW);
+            lowBatteryAW.Show();
         }
     }
 }
