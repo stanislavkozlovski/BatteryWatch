@@ -28,11 +28,44 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.warningLabel = new System.Windows.Forms.Label();
+            this.okButton = new System.Windows.Forms.Button();
+            this.SuspendLayout();
+            // 
+            // warningLabel
+            // 
+            this.warningLabel.AutoSize = true;
+            this.warningLabel.Location = new System.Drawing.Point(20, 19);
+            this.warningLabel.Name = "warningLabel";
+            this.warningLabel.Size = new System.Drawing.Size(0, 17);
+            this.warningLabel.TabIndex = 0;
+            // 
+            // okButton
+            // 
+            this.okButton.Location = new System.Drawing.Point(132, 55);
+            this.okButton.Name = "okButton";
+            this.okButton.Size = new System.Drawing.Size(74, 37);
+            this.okButton.TabIndex = 1;
+            this.okButton.Text = "OK";
+            this.okButton.UseVisualStyleBackColor = true;
+            // 
+            // AlertWindow
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(359, 104);
+            this.Controls.Add(this.okButton);
+            this.Controls.Add(this.warningLabel);
+            this.Name = "AlertWindow";
             this.Text = "AlertWindow";
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
         }
 
         #endregion
+
+        private System.Windows.Forms.Label warningLabel;
+        private System.Windows.Forms.Button okButton;
     }
 }

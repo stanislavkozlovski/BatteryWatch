@@ -16,5 +16,10 @@ namespace BatteryWatch
         {
             InitializeComponent();
         }
+        
+        public void ChangeWarningLabelText(string text)
+        {
+            this.warningLabel.Text = text;
+        }
     }
 }
