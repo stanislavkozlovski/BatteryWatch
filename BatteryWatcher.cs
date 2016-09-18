@@ -8,6 +8,9 @@ namespace BatteryWatch
 {
     class BatteryWatcher
     {
+        const string LOW_BATTERY_MESSAGE = "Your battery has dropped down below {0} percent!";
+        const string HIGH_BATTERY_MESSAGE = "Your battery has exceeded {} percent!";
+
         public void MainLoop(int minimum, int maximum)
         {
             while (true)
@@ -19,12 +22,12 @@ namespace BatteryWatch
 
                 if(IsBelowMinimum(minimum, batteryPercent))
                 {
-                    Application.Run(new AlertWindow());
+                    DisplayLowBatteryAlertWindow(minimum);
                     break;
                 }
                 else if(IsAboveMaximum(maximum, batteryPercent))
                 {
-                    Application.Run(new AlertWindow());
+                    DisplayHighBatteryAlertWindow(maximum);
                     break;
                 }
 
@@ -40,6 +43,28 @@ namespace BatteryWatch
         private bool IsAboveMaximum(int maximum, int current)
         {
             return current > maximum;
+        }
+
+        private void DisplayHighBatteryAlertWindow(int maximumPercentage)
+        {
+            string message = string.Format(HIGH_BATTERY_MESSAGE, maximumPercentage);
+
+            AlertWindow highBatteryAW = new AlertWindow();
+
+            highBatteryAW.ChangeWarningLabelText(message);
+
+            Application.Run(highBatteryAW);
+        }
+
+        private void DisplayLowBatteryAlertWindow(int minimumPercentage)
+        {
+            string message = string.Format(LOW_BATTERY_MESSAGE, minimumPercentage);
+
+            AlertWindow lowBatteryAW = new AlertWindow();
+
+            lowBatteryAW.ChangeWarningLabelText(message);
+
+            Application.Run(lowBatteryAW);
         }
     }
 }
