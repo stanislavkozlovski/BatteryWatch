@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AlertWindow));
             this.warningLabel = new System.Windows.Forms.Label();
             this.okButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -57,6 +58,7 @@
             this.ClientSize = new System.Drawing.Size(359, 104);
             this.Controls.Add(this.okButton);
             this.Controls.Add(this.warningLabel);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AlertWindow";
             this.Text = "AlertWindow";
             this.ResumeLayout(false);

@@ -7,3 +7,4 @@ C:\Work\BatteryWatch\BatteryWatch\bin\Debug\BatteryWatch.pdb
 C:\Work\BatteryWatch\BatteryWatch\obj\Debug\BatteryWatch.exe
 C:\Work\BatteryWatch\BatteryWatch\obj\Debug\BatteryWatch.pdb
 C:\Work\BatteryWatch\BatteryWatch\obj\Debug\BatteryWatch.SettingsWindow.resources
+C:\Work\BatteryWatch\BatteryWatch\obj\Debug\BatteryWatch.AlertWindow.resources

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SettingsWindow));
             this.lowestBatteryPercentTextBox = new System.Windows.Forms.TextBox();
             this.highestBatteryPercentTextBox = new System.Windows.Forms.TextBox();
             this.lowestBatteryPercentageLabel = new System.Windows.Forms.Label();
@@ -101,6 +102,7 @@
             this.Controls.Add(this.lowestBatteryPercentageLabel);
             this.Controls.Add(this.highestBatteryPercentTextBox);
             this.Controls.Add(this.lowestBatteryPercentTextBox);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "SettingsWindow";
             this.Text = "Battery";
             this.ResumeLayout(false);

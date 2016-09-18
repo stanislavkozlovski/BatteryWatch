@@ -33,16 +33,15 @@ public class BatteryWatchApplicationContext : ApplicationContext
         // Initialize Tray Icon
         trayIcon = new NotifyIcon()
         {
-            Icon = new Icon("../../Resources/Danleech-Simple-Picasa.ico"),
+            Icon = new Icon("../../Resources/BatteryWatchIcon.ico"),
             ContextMenu = new ContextMenu(new MenuItem[] {
                 new MenuItem("Exit", OnExit)
             }),
             Visible = true
         };
 
-        BatteryWatcher bww = new BatteryWatcher();
-        bww.MainLoop(minimumPercentage, maximumPercentage);
-        
+        BatteryWatcher bw = new BatteryWatcher();
+        bw.MainLoop(minimumPercentage, maximumPercentage);
     }
 
     void OnExit(object sender, EventArgs e)

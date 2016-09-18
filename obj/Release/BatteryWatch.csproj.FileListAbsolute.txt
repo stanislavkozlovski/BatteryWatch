@@ -1,0 +1,10 @@
+C:\Work\BatteryWatch\BatteryWatch\bin\Release\BatteryWatch.exe.config
+C:\Work\BatteryWatch\BatteryWatch\bin\Release\BatteryWatch.exe
+C:\Work\BatteryWatch\BatteryWatch\bin\Release\BatteryWatch.pdb
+C:\Work\BatteryWatch\BatteryWatch\obj\Release\BatteryWatch.AlertWindow.resources
+C:\Work\BatteryWatch\BatteryWatch\obj\Release\BatteryWatch.Properties.Resources.resources
+C:\Work\BatteryWatch\BatteryWatch\obj\Release\BatteryWatch.SettingsWindow.resources
+C:\Work\BatteryWatch\BatteryWatch\obj\Release\BatteryWatch.csproj.GenerateResource.Cache
+C:\Work\BatteryWatch\BatteryWatch\obj\Release\BatteryWatch.exe
+C:\Work\BatteryWatch\BatteryWatch\obj\Release\BatteryWatch.pdb
+C:\Work\BatteryWatch\BatteryWatch\obj\Release\BatteryWatch.csprojResolveAssemblyReference.cache

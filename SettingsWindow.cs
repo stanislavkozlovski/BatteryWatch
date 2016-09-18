@@ -29,7 +29,8 @@ namespace BatteryWatch
                 this.Hide();
 
                 // create the tray icon and start the watcher loop
-                var bwac = new BatteryWatchApplicationContext(this.lowestBatteryPercent, this.highestBatteryPercent); 
+                var bwac = new BatteryWatchApplicationContext(this.lowestBatteryPercent, this.highestBatteryPercent);
+                
             }
         }
     }
