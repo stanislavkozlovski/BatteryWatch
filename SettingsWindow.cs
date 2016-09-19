@@ -14,38 +14,34 @@ namespace BatteryWatch
 
         private void lowestBatteryPercentTextBox_TextChanged(object sender, System.EventArgs e)
         {
-            bool hasParsed = int.TryParse(this.lowestBatteryPercentTextBox.Text, out this.lowestBatteryPercent);
-
-            if (!hasParsed)
-                this.lowestBatteryPercent = -1;  // used to trigger the invalid input window
+            // add visual percentage
         }
 
         private void highestBatteryPercentTextBox_TextChanged(object sender, System.EventArgs e)
         {
-            bool hasParsed = int.TryParse(this.highestBatteryPercentTextBox.Text, out this.highestBatteryPercent);
-
-            if (!hasParsed)
-                this.highestBatteryPercent = -1;  // used to trigger the invalid input window
+            // add visual percentage
         }
 
         private void closeSettingsButton_Click(object sender, System.EventArgs e)
         {
-            if(lowestBatteryPercent != 0 && highestBatteryPercent != 0) // they are changed
+            // parse the text
+            int.TryParse(this.lowestBatteryPercentTextBox.Text, out this.lowestBatteryPercent);
+            int.TryParse(this.highestBatteryPercentTextBox.Text, out this.highestBatteryPercent);
+
+            if (InputIsValid(this.lowestBatteryPercent, this.highestBatteryPercent))
             {
-                if (InputIsValid(this.lowestBatteryPercent, this.highestBatteryPercent))
-                {
-                    this.Hide();
+                this.Hide();
 
-                    // create the tray icon and start the watcher loop
-                    var bwac = new BatteryWatchApplicationContext(this.lowestBatteryPercent, this.highestBatteryPercent);
-                }
-                else
-                {
-                    InvalidInputWindow invalidInputWindow = new InvalidInputWindow();
-                    invalidInputWindow.Show();
-                }
-
+                // create the tray icon and start the watcher loop
+                var bwac = new BatteryWatchApplicationContext(this.lowestBatteryPercent, this.highestBatteryPercent);
             }
+            else
+            {
+                InvalidInputWindow invalidInputWindow = new InvalidInputWindow();
+                invalidInputWindow.Show();
+            }
+
+            
         }
 
         private bool InputIsValid(int minimumPercentage, int maximumPercentage)
