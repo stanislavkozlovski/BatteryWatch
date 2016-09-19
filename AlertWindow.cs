@@ -4,10 +4,14 @@ namespace BatteryWatch
 {
     public partial class AlertWindow : Form
     {
-        // TODO: Change Window title
         public AlertWindow()
         {
             InitializeComponent();
+        }
+
+        public void ChangeAlertWindowTitle(string title)
+        {
+            this.Text = title;
         }
         
         public void ChangeWarningLabelText(string text)

@@ -8,6 +8,8 @@ namespace BatteryWatch
 {
     class BatteryWatcher
     {
+        const string LOW_BATTERY_TITLE = "Battery is too low!";
+        const string HIGH_BATTERY_TITLE = "Battery is too high!";
         const string LOW_BATTERY_MESSAGE = "Your battery has dropped down below {0} percent!";
         const string HIGH_BATTERY_MESSAGE = "Your battery has exceeded {0} percent!";
         int minimumBatteryPercentage = 0,
@@ -99,6 +101,7 @@ namespace BatteryWatch
             AlertWindow highBatteryAW = new AlertWindow();
 
             highBatteryAW.ChangeWarningLabelText(message);
+            highBatteryAW.ChangeAlertWindowTitle(HIGH_BATTERY_TITLE);
 
             highBatteryAW.Show();
 
@@ -118,6 +121,7 @@ namespace BatteryWatch
             AlertWindow lowBatteryAW = new AlertWindow();
 
             lowBatteryAW.ChangeWarningLabelText(message);
+            lowBatteryAW.ChangeAlertWindowTitle(LOW_BATTERY_TITLE);
 
             lowBatteryAW.Show();
 
