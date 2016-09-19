@@ -53,6 +53,12 @@
       <DependentUpon>AlertWindow.cs</DependentUpon>
     </Compile>
     <Compile Include="BatteryWatcher.cs" />
+    <Compile Include="InvalidInputWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InvalidInputWindow.Designer.cs">
+      <DependentUpon>InvalidInputWindow.cs</DependentUpon>
+    </Compile>
     <Compile Include="SettingsWindow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -63,6 +69,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="AlertWindow.resx">
       <DependentUpon>AlertWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InvalidInputWindow.resx">
+      <DependentUpon>InvalidInputWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

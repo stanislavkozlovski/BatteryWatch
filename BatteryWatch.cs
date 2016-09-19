@@ -4,7 +4,7 @@ using System.Drawing;
 using System.Windows.Forms;
 
 
-/* VERSION: 0.8
+/* VERSION: 0.9
    AUTHOR: Enether */
 namespace BatteryWatch
 {
