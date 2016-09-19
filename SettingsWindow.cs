@@ -19,6 +19,16 @@ namespace BatteryWatch
                 AddVisualPercentage(lowestBatteryPercentTextBox);
         }
 
+        private void LowestBatteryPercentTextBox_SelectionChanged(object sender, System.EventArgs e)
+        {
+            if (lowestBatteryPercentTextBox.SelectionStart == lowestBatteryPercentTextBox.Text.Length)
+                // we cannot go past the % symbol
+                lowestBatteryPercentTextBox.SelectionStart -= 1;
+            else if (lowestBatteryPercentTextBox.SelectedText.Contains("%"))
+                // we cannot select the % symbol
+                lowestBatteryPercentTextBox.SelectionLength -= 1;
+        }
+
         private void highestBatteryPercentTextBox_TextChanged(object sender, System.EventArgs e)
         {
             // add visual percentage
@@ -26,7 +36,17 @@ namespace BatteryWatch
                 AddVisualPercentage(highestBatteryPercentTextBox);
         }
 
-        private void AddVisualPercentage(TextBox textBox)
+        private void HighestBatteryPercentTextBox_SelectionChanged(object sender, System.EventArgs e)
+        {
+            if (highestBatteryPercentTextBox.SelectionStart == highestBatteryPercentTextBox.Text.Length)
+                // we cannot go past the % symbol
+                highestBatteryPercentTextBox.SelectionStart -= 1;
+            else if (highestBatteryPercentTextBox.SelectedText.Contains("%"))
+                // we cannot select the % symbol
+                highestBatteryPercentTextBox.SelectionLength -= 1;
+        }
+
+        private void AddVisualPercentage(RichTextBox textBox)
         {
             /*  this methods adds a % symbol to the end of the textbox's text */
             textBox.Text += '%';

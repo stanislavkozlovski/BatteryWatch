@@ -29,29 +29,13 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SettingsWindow));
-            this.lowestBatteryPercentTextBox = new System.Windows.Forms.TextBox();
-            this.highestBatteryPercentTextBox = new System.Windows.Forms.TextBox();
             this.lowestBatteryPercentageLabel = new System.Windows.Forms.Label();
             this.highestBatteryPercentageLabel = new System.Windows.Forms.Label();
             this.infoLabel = new System.Windows.Forms.Label();
             this.closeSettingsButton = new System.Windows.Forms.Button();
+            this.lowestBatteryPercentTextBox = new System.Windows.Forms.RichTextBox();
+            this.highestBatteryPercentTextBox = new System.Windows.Forms.RichTextBox();
             this.SuspendLayout();
-            // 
-            // lowestBatteryPercentTextBox
-            // 
-            this.lowestBatteryPercentTextBox.Location = new System.Drawing.Point(12, 103);
-            this.lowestBatteryPercentTextBox.Name = "lowestBatteryPercentTextBox";
-            this.lowestBatteryPercentTextBox.Size = new System.Drawing.Size(100, 22);
-            this.lowestBatteryPercentTextBox.TabIndex = 0;
-            this.lowestBatteryPercentTextBox.TextChanged += new System.EventHandler(this.lowestBatteryPercentTextBox_TextChanged);
-            // 
-            // highestBatteryPercentTextBox
-            // 
-            this.highestBatteryPercentTextBox.Location = new System.Drawing.Point(170, 103);
-            this.highestBatteryPercentTextBox.Name = "highestBatteryPercentTextBox";
-            this.highestBatteryPercentTextBox.Size = new System.Drawing.Size(100, 22);
-            this.highestBatteryPercentTextBox.TabIndex = 1;
-            this.highestBatteryPercentTextBox.TextChanged += new System.EventHandler(this.highestBatteryPercentTextBox_TextChanged);
             // 
             // lowestBatteryPercentageLabel
             // 
@@ -91,17 +75,39 @@
             this.closeSettingsButton.UseVisualStyleBackColor = true;
             this.closeSettingsButton.Click += new System.EventHandler(this.closeSettingsButton_Click);
             // 
+            // lowestBatteryPercentTextBox
+            // 
+            this.lowestBatteryPercentTextBox.Location = new System.Drawing.Point(15, 95);
+            this.lowestBatteryPercentTextBox.Multiline = false;
+            this.lowestBatteryPercentTextBox.Name = "lowestBatteryPercentTextBox";
+            this.lowestBatteryPercentTextBox.Size = new System.Drawing.Size(110, 26);
+            this.lowestBatteryPercentTextBox.TabIndex = 6;
+            this.lowestBatteryPercentTextBox.Text = "";
+            this.lowestBatteryPercentTextBox.TextChanged += new System.EventHandler(this.lowestBatteryPercentTextBox_TextChanged);
+            this.lowestBatteryPercentTextBox.SelectionChanged += new System.EventHandler(this.LowestBatteryPercentTextBox_SelectionChanged);
+            // 
+            // highestBatteryPercentTextBox
+            // 
+            this.highestBatteryPercentTextBox.Location = new System.Drawing.Point(160, 95);
+            this.highestBatteryPercentTextBox.Multiline = false;
+            this.highestBatteryPercentTextBox.Name = "highestBatteryPercentTextBox";
+            this.highestBatteryPercentTextBox.Size = new System.Drawing.Size(110, 26);
+            this.highestBatteryPercentTextBox.TabIndex = 7;
+            this.highestBatteryPercentTextBox.Text = "";
+            this.highestBatteryPercentTextBox.TextChanged += new System.EventHandler(this.highestBatteryPercentTextBox_TextChanged);
+            this.highestBatteryPercentTextBox.SelectionChanged += new System.EventHandler(this.HighestBatteryPercentTextBox_SelectionChanged);
+            // 
             // SettingsWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(282, 171);
+            this.Controls.Add(this.highestBatteryPercentTextBox);
+            this.Controls.Add(this.lowestBatteryPercentTextBox);
             this.Controls.Add(this.closeSettingsButton);
             this.Controls.Add(this.infoLabel);
             this.Controls.Add(this.highestBatteryPercentageLabel);
             this.Controls.Add(this.lowestBatteryPercentageLabel);
-            this.Controls.Add(this.highestBatteryPercentTextBox);
-            this.Controls.Add(this.lowestBatteryPercentTextBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
@@ -113,15 +119,19 @@
 
         }
 
+        private void HighestBatteryPercentTextBox_TextChanged(object sender, System.EventArgs e)
+        {
+            throw new System.NotImplementedException();
+        }
+
         #endregion
-        
-        private System.Windows.Forms.TextBox lowestBatteryPercentTextBox;
-        private System.Windows.Forms.TextBox highestBatteryPercentTextBox;
         private System.Windows.Forms.Label lowestBatteryPercentageLabel;
         private System.Windows.Forms.Label highestBatteryPercentageLabel;
         private System.Windows.Forms.Label informationLabel;
         private System.Windows.Forms.Label infoLabel;
         private System.Windows.Forms.Button closeSettingsButton;
+        private System.Windows.Forms.RichTextBox lowestBatteryPercentTextBox;
+        private System.Windows.Forms.RichTextBox highestBatteryPercentTextBox;
     }
 }
 
