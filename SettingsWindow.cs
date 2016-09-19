@@ -15,18 +15,28 @@ namespace BatteryWatch
         private void lowestBatteryPercentTextBox_TextChanged(object sender, System.EventArgs e)
         {
             // add visual percentage
+            if (!lowestBatteryPercentTextBox.Text.EndsWith("%"))
+                AddVisualPercentage(lowestBatteryPercentTextBox);
         }
 
         private void highestBatteryPercentTextBox_TextChanged(object sender, System.EventArgs e)
         {
             // add visual percentage
+            if (!highestBatteryPercentTextBox.Text.EndsWith("%"))
+                AddVisualPercentage(highestBatteryPercentTextBox);
         }
 
+        private void AddVisualPercentage(TextBox textBox)
+        {
+            /*  this methods adds a % symbol to the end of the textbox's text */
+            textBox.Text += '%';
+            textBox.SelectionStart = textBox.Text.Length - 1;  // move the cursor before the percent
+        }
         private void closeSettingsButton_Click(object sender, System.EventArgs e)
         {
             // parse the text
-            int.TryParse(this.lowestBatteryPercentTextBox.Text, out this.lowestBatteryPercent);
-            int.TryParse(this.highestBatteryPercentTextBox.Text, out this.highestBatteryPercent);
+            int.TryParse(this.lowestBatteryPercentTextBox.Text.Replace("%", ""), out this.lowestBatteryPercent);
+            int.TryParse(this.highestBatteryPercentTextBox.Text.Replace("%", ""), out this.highestBatteryPercent);
 
             if (InputIsValid(this.lowestBatteryPercent, this.highestBatteryPercent))
             {
