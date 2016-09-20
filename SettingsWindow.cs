@@ -15,10 +15,10 @@ namespace BatteryWatch
 
         private void lowestBatteryPercentTextBox_TextChanged(object sender, System.EventArgs e)
         {
-            RemoveNonNumericalCharacters(lowestBatteryPercentTextBox);
+            int previousCaretPosition = RemoveNonNumericalCharacters(lowestBatteryPercentTextBox);
             // add visual percentage
             if (!lowestBatteryPercentTextBox.Text.EndsWith("%") && lowestBatteryPercentTextBox.Text.Length > 0)
-                AddVisualPercentage(lowestBatteryPercentTextBox, 3);
+                AddVisualPercentage(lowestBatteryPercentTextBox, previousCaretPosition);
         }
 
         private void LowestBatteryPercentTextBox_SelectionChanged(object sender, System.EventArgs e)
