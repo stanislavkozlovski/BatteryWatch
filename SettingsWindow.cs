@@ -18,7 +18,7 @@ namespace BatteryWatch
             RemoveNonNumericalCharacters(lowestBatteryPercentTextBox);
             // add visual percentage
             if (!lowestBatteryPercentTextBox.Text.EndsWith("%") && lowestBatteryPercentTextBox.Text.Length > 0)
-                AddVisualPercentage(lowestBatteryPercentTextBox);
+                AddVisualPercentage(lowestBatteryPercentTextBox, 3);
         }
 
         private void LowestBatteryPercentTextBox_SelectionChanged(object sender, System.EventArgs e)
@@ -33,10 +33,10 @@ namespace BatteryWatch
 
         private void highestBatteryPercentTextBox_TextChanged(object sender, System.EventArgs e)
         {
-            RemoveNonNumericalCharacters(highestBatteryPercentTextBox);
+            int previousCaretPosition = RemoveNonNumericalCharacters(highestBatteryPercentTextBox);
             // add visual percentage
             if (!highestBatteryPercentTextBox.Text.EndsWith("%") && highestBatteryPercentTextBox.Text.Length > 0)
-                AddVisualPercentage(highestBatteryPercentTextBox);
+                AddVisualPercentage(highestBatteryPercentTextBox, previousCaretPosition);
         }
 
         private void HighestBatteryPercentTextBox_SelectionChanged(object sender, System.EventArgs e)
@@ -49,18 +49,26 @@ namespace BatteryWatch
                 highestBatteryPercentTextBox.SelectionLength -= 1;
         }
 
-        private void RemoveNonNumericalCharacters(RichTextBox textBox)
+        private int RemoveNonNumericalCharacters(RichTextBox textBox)
         {
             /* this method removes every non-numerical character, entered in a text box.
-             it is called whenever the text boxes are edited and before the % symbol is added*/
-            textBox.Text = Regex.Replace(textBox.Text, @"[^0-9]", "");                                                                                                                                         
+             it is called whenever the text boxes are edited and before the % symbol is added
+             Returns the previous caret position*/
+            int previousCaretPosition = textBox.SelectionStart == 0 ? 0 : textBox.SelectionStart - 1;
+            textBox.Text = Regex.Replace(textBox.Text, @"[^0-9]", "");
+
+            return previousCaretPosition;                                                                                                                                   
         }
 
-        private void AddVisualPercentage(RichTextBox textBox)
+        private void AddVisualPercentage(RichTextBox textBox, int previousCaretPosition)
         {
             /*  this methods adds a % symbol to the end of the textbox's text */
             textBox.Text += '%';
-            textBox.SelectionStart = textBox.Text.Length - 1;  // move the cursor before the percent
+            // move the cursor where it should be
+            if (previousCaretPosition + 1 != textBox.Text.Length)
+                textBox.SelectionStart = previousCaretPosition + 1;
+            else
+                textBox.SelectionStart = previousCaretPosition;
         }
         private void closeSettingsButton_Click(object sender, System.EventArgs e)
         {
