@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms;
+﻿using System.Text.RegularExpressions;
+using System.Windows.Forms;
 
 namespace BatteryWatch
 {
@@ -14,8 +15,9 @@ namespace BatteryWatch
 
         private void lowestBatteryPercentTextBox_TextChanged(object sender, System.EventArgs e)
         {
+            RemoveNonNumericalCharacters(lowestBatteryPercentTextBox);
             // add visual percentage
-            if (!lowestBatteryPercentTextBox.Text.EndsWith("%"))
+            if (!lowestBatteryPercentTextBox.Text.EndsWith("%") && lowestBatteryPercentTextBox.Text.Length > 0)
                 AddVisualPercentage(lowestBatteryPercentTextBox);
         }
 
@@ -31,8 +33,9 @@ namespace BatteryWatch
 
         private void highestBatteryPercentTextBox_TextChanged(object sender, System.EventArgs e)
         {
+            RemoveNonNumericalCharacters(highestBatteryPercentTextBox);
             // add visual percentage
-            if (!highestBatteryPercentTextBox.Text.EndsWith("%"))
+            if (!highestBatteryPercentTextBox.Text.EndsWith("%") && highestBatteryPercentTextBox.Text.Length > 0)
                 AddVisualPercentage(highestBatteryPercentTextBox);
         }
 
@@ -44,6 +47,13 @@ namespace BatteryWatch
             else if (highestBatteryPercentTextBox.SelectedText.Contains("%"))
                 // we cannot select the % symbol
                 highestBatteryPercentTextBox.SelectionLength -= 1;
+        }
+
+        private void RemoveNonNumericalCharacters(RichTextBox textBox)
+        {
+            /* this method removes every non-numerical character, entered in a text box.
+             it is called whenever the text boxes are edited and before the % symbol is added*/
+            textBox.Text = Regex.Replace(textBox.Text, @"[^0-9]", "");                                                                                                                                         
         }
 
         private void AddVisualPercentage(RichTextBox textBox)
