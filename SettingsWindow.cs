@@ -129,5 +129,17 @@ namespace BatteryWatch
 
             return validMinPercentage && validMaxPercentage && differenceIsBiggerThanFive;
         }
+
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            // Disablind Ctrl-V (pasting) in the textbox
+            switch (keyData)
+            {
+                case Keys.Control | Keys.V:
+                    return true;
+                default:
+                    return base.ProcessCmdKey(ref msg, keyData);
+            }
+        }
     }
 }
