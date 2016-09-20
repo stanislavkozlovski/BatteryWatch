@@ -19,6 +19,12 @@ namespace BatteryWatch
             // add visual percentage
             if (!lowestBatteryPercentTextBox.Text.EndsWith("%") && lowestBatteryPercentTextBox.Text.Length > 0)
                 AddVisualPercentage(lowestBatteryPercentTextBox, previousCaretPosition);
+
+            // check if the input is longer than 2 numbers
+            if (lowestBatteryPercentTextBox.Text.Length > 3)  // bigger than three because of the % at the end
+            {
+                HandleTooLongInput(lowestBatteryPercentTextBox);
+            }
         }
 
         private void LowestBatteryPercentTextBox_SelectionChanged(object sender, System.EventArgs e)
@@ -37,6 +43,23 @@ namespace BatteryWatch
             // add visual percentage
             if (!highestBatteryPercentTextBox.Text.EndsWith("%") && highestBatteryPercentTextBox.Text.Length > 0)
                 AddVisualPercentage(highestBatteryPercentTextBox, previousCaretPosition);
+
+            // check if the input is longer than 2 numbers
+            if (highestBatteryPercentTextBox.Text.Length > 3)  // bigger than three because of the % at the end
+            {
+                HandleTooLongInput(highestBatteryPercentTextBox);
+            }
+        }
+
+        private void HandleTooLongInput(RichTextBox textBox)
+        {
+            /* this method is called whenever the user tries to enter input that is too long,
+            because the maximum permitted length is two numbers */
+            int previousCaretPosition = textBox.SelectionStart;  // get the caret position before removing the excess numbers
+
+            textBox.Text = textBox.Text.Remove(previousCaretPosition - 1, 1);  // remove the unecessary number
+
+            textBox.SelectionStart = previousCaretPosition - 1;  // move the caret where it was before the user tried to add a number
         }
 
         private void HighestBatteryPercentTextBox_SelectionChanged(object sender, System.EventArgs e)
@@ -87,9 +110,7 @@ namespace BatteryWatch
             {
                 InvalidInputWindow invalidInputWindow = new InvalidInputWindow();
                 invalidInputWindow.Show();
-            }
-
-            
+            }       
         }
 
         private bool InputIsValid(int minimumPercentage, int maximumPercentage)

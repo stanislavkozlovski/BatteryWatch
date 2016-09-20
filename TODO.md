@@ -1,2 +1,3 @@
 - [x] Do not permit non-numerical characters in input
-- Do not permit input longer than 2 in length ( in reality, longer than 3, because of the %)
+- [x] Do not permit input longer than 2 in length ( in reality, longer than 3, because of the %)
+- copy-paste 333, make caret position go where it should
