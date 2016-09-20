@@ -77,7 +77,13 @@ namespace BatteryWatch
             /* this method removes every non-numerical character, entered in a text box.
              it is called whenever the text boxes are edited and before the % symbol is added
              Returns the previous caret position*/
-            int previousCaretPosition = textBox.SelectionStart == 0 ? 0 : textBox.SelectionStart - 1;
+            int previousCaretPosition = 0;
+
+            if (!textBox.Text.EndsWith("%"))  // if it's the first text entered (copy-pasted numbers longer than 2 digits) 
+                previousCaretPosition = textBox.Text.Length - 1;
+            else
+                previousCaretPosition = textBox.SelectionStart == 0 ? 0 : textBox.SelectionStart - 1;
+
             textBox.Text = Regex.Replace(textBox.Text, @"[^0-9]", "");
 
             return previousCaretPosition;                                                                                                                                   
